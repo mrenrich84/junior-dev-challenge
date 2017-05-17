@@ -7,15 +7,12 @@ describe ("API server", () => {
   })
   describe ('/', () => {
     it ("API server is on" , async () => {
-      // sends a request to the API
       let options = {
         uri:  'http://localhost:8000/',
         resolveWithFullResponse: true,
         simple: false
       }
       let res = await request(options)
-
-      // expect to receive 200
       expect(res.statusCode).toEqual(200)
     })
   })
