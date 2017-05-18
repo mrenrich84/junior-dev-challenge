@@ -1,10 +1,6 @@
-let server = require('./server')
 let request = require('request-promise-native')
 
 describe ("API server", () => {
-  afterAll(() => {
-    server.close()
-  })
   describe ('/', () => {
     it ("API server is on" , async () => {
       let options = {

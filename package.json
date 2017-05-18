@@ -7,12 +7,14 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^20.0.1",
+    "nodemon": "^1.11.0",
     "request-promise-native": "^1.0.4"
   },
   "dependencies": {
     "express": "^4.15.2"
   },
   "scripts": {
-    "test": "jest"
+    "test:api": "jest api --watch",
+    "start:api": "nodemon api/server"
   }
 }
