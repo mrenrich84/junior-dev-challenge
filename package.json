@@ -11,10 +11,14 @@
     "request-promise-native": "^1.0.4"
   },
   "dependencies": {
+    "@google/maps": "^0.3.1",
+    "dotenv": "^4.0.0",
     "express": "^4.15.2"
   },
   "scripts": {
+    "test": "jest --watch",
     "test:api": "jest api --watch",
+    "test:tools": "jest tools --watch",
     "start:api": "nodemon api/server"
   }
 }
