@@ -1,3 +1,6 @@
+let mockGmapsTalker = require('../tools/testUtilities').mockGmapsTalker
+jest.mock('../tools/gmaps_talker', () => mockGmapsTalker)
+
 let helper = require('./helper')
 
 describe ('Helper', () => {
