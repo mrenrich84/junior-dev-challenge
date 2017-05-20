@@ -1,6 +1,16 @@
+let mockGmapsTalker = require('../tools/testUtilities').mockGmapsTalker
+jest.mock('../tools/gmaps_talker', () => mockGmapsTalker)
+
+let server_handle = require('./server')
+
 let request = require('request-promise-native')
 
 describe ("API server", () => {
+  afterAll(done => {
+    console.log('Shutting down server');
+    server_handle.close()
+    done()
+  })
   describe ('/', () => {
     it ("API server is on" , async () => {
       let options = {
@@ -27,7 +37,7 @@ describe ("API server", () => {
       expect(clients[0].name).toEqual("Ale")
     })
   })
-  xdescribe ('/client/:id', () => {
+  describe ('/client/:id', () => {
     it ("returns a list of candidates with their distance in meters and seconds to the client" , async () => {
       // sends a request to the API
       let options = {
