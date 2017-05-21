@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Mapp /> renders correctly 1`] = `
+<div
+  class="section"
+>
+  <div
+    class="col s12"
+    id="map"
+    style="height:500px;"
+  />
+</div>
+`;
