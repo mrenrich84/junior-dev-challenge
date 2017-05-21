@@ -1,7 +1,7 @@
-let Candidates = require('../Data/candidates').Candidates
-let Clients = require('../Data/locations').Clients
+let Candidates = require('./models/candidates').Candidates
+let Clients = require('./models/locations').Clients
 let gmapsTalker = require('../tools/gmaps_talker')
-let candidatesHelper = require('../Data/candidates_helper')
+let candidatesHelper = require('./models/candidates_helper')
 
 // ------- ROUTES HELPERS
 // GET /clients

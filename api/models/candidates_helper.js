@@ -1,7 +1,7 @@
-let utilities = require('../tools/utilities')
-let dateHelpers = require('../tools/date_helpers')
-let Candidates = require('../Data/candidates').Candidates
-let gmapsTalker = require('../tools/gmaps_talker')
+let utilities = require('../../tools/utilities')
+let dateHelpers = require('../../tools/date_helpers')
+let Candidates = require('./candidates').Candidates
+let gmapsTalker = require('../../tools/gmaps_talker')
 
 // ------- CONST
 const TRANSPORT_TYPE_CANDIDATES_TO_GMAPS = Object.freeze({
