@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Main /> renders correctly 1`] = `
+<div>
+  <div
+    class="navbar-fixed"
+  >
+    <nav
+      class="red darken-4"
+      role="navigation"
+    >
+      <div
+        class="nav-wrapper container"
+      >
+        <a
+          class="brand-logo"
+          href="#"
+          id="logo-container"
+        >
+          Nearest Candidates
+        </a>
+      </div>
+    </nav>
+  </div>
+  <div
+    class="page"
+    id="homePage"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="section"
+      >
+        <div
+          class="col s12"
+          id="map"
+          style="height:500px;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
