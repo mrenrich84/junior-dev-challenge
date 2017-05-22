@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Map, Popup, TileLayer } from 'react-leaflet';
-import L from 'leaflet';
 
 import PanControlContainer from './PanControlContainer'
 import MarkerContainer from './MarkerContainer'
