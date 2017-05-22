@@ -11,18 +11,24 @@ function addPinsOnMap(latLongs) {
 	  });
 	}
 }
-$(document).ready(function() {
-	map = new L.Map('map', { zoom: 15});
 
+function createOsm () {
 	// create the tile layer with correct attribution
 	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-	var osm = new L.TileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+ 	return new L.TileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
         minZoom: 2,
         maxZoom: 20,
         maxNativeZoom: 17
     });
+
+}
+
+$(document).ready(function() {
+	map = new L.Map('map', { zoom: 15});
+
+	var osm = createOsm()
 	map.setView(new L.LatLng(51.4839337, -0.2549888),9);
 	map.addLayer(osm);
   map.invalidateSize();
