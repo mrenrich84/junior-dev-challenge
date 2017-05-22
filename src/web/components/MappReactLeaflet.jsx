@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Map, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
+import {  STATIC_PATH } from '../../shared/config'
 
 const stamenTonerTiles = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
 const stamenTonerAttr = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
 const mapCenter = [51.4839337, -0.2549888];
 const zoomLevel = 9;
+
+const iconSize = 24
 
 export default class App extends Component {
     constructor(props) {
@@ -50,11 +53,11 @@ export default class App extends Component {
     }
 
     render() {
-    window.console.log('this.state.currentZoomLevel ->',
-        this.state.currentZoomLevel);
+    window.console.log('this.state.currentZoomLevel ->', this.state.currentZoomLevel);
         return (
             <div>
                 <Map
+                    className="col s12"
                     ref={m => { this.leafletMap = m; }}
                     center={mapCenter}
                     zoom={zoomLevel}
@@ -64,28 +67,23 @@ export default class App extends Component {
                         url={stamenTonerTiles}
                     />
                     <Control position="topright">
-                        <div
-                            style={{
-                                backgroundColor: 'black',
-                                padding: '5px',
-                            }}
-                        >
-                            <div style={{ marginLeft: '37px' }}>
-                                <button onClick={this.handleUpPanClick}>
-                                    Pan up
+                        <div>
+                            <div style={{ marginLeft: '21px' }}>
+                              <button onClick={this.handleUpPanClick} style={{ height: '29px' }}>
+                                    <img src={STATIC_PATH + "/pictures/icons/arrows/up.png"} width={iconSize} height={iconSize}/>
                                 </button>
                             </div>
                             <div>
-                                <button onClick={this.handleLeftPanClick}>
-                                    Pan left
+                                <button onClick={this.handleLeftPanClick}style={{ height: '29px' }}>
+                                      <img src={STATIC_PATH + "/pictures/icons/arrows/left.png"} width={iconSize} height={iconSize}/>
                                 </button>
-                                <button onClick={this.handleRightPanClick}>
-                                    Pan right
+                                <button onClick={this.handleRightPanClick}style={{ height: '29px' }}>
+                                      <img src={STATIC_PATH + "/pictures/icons/arrows/right.png"} width={iconSize} height={iconSize}/>
                                 </button>
                             </div>
-                            <div style={{ marginLeft: '30px' }}>
-                                <button onClick={this.handleDownPanClick}>
-                                    Pan down
+                            <div style={{ marginLeft: '21px' }}>
+                                <button onClick={this.handleDownPanClick} style={{ height: '29px' }}>
+                                    <img src={STATIC_PATH + "/pictures/icons/arrows/down.png"} width={iconSize} height={iconSize}/>
                                 </button>
                             </div>
                         </div>

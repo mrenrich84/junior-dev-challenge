@@ -16,8 +16,7 @@ const renderApp = () =>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
     <style>
     .leaflet-container {
-        height: 600px;
-        width: 600px;
+        height: 500px;
     }
 </style>
   </head>
