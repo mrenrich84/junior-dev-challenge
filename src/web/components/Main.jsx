@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import Navbar from './Navbar'
-import Mapp from './Mapp'
+import ClientList from './ClientList'
 
 const Main = () => (
   <div>
     <Navbar />
     <div id="homePage" className="page">
       <div className="container">
-          <Mapp />
+          <ClientList />
       </div>
     </div>
   </div>
