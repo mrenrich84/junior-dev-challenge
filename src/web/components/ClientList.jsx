@@ -1,5 +1,5 @@
 import React from 'react'
-import Mapp from './Mapp'
+import Mapp from './Mapp/Mapp'
 import Client from './Client'
 
 const ClientList = () => (
