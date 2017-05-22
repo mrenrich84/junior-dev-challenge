@@ -1,5 +1,5 @@
 import React from 'react'
-import Mapp from './Mapp/Mapp'
+import MappContainer from './Mapp/MappContainer'
 import Client from './Client'
 
 const ClientList = () => (
@@ -8,7 +8,7 @@ const ClientList = () => (
       <div className="col s12">
         <h2>Clients</h2>
     </div>
-    <Mapp />
+    <MappContainer />
     <div className="row">
       <div className="col s12">
         <ul className="collection">
