@@ -13,16 +13,20 @@ const renderApp = () =>
     <title>${APP_NAME}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="${STATIC_PATH}/css/materialize.css">
-    <link rel="stylesheet" href="${STATIC_PATH}/css/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
+    <style>
+    .leaflet-container {
+        height: 600px;
+        width: 600px;
+    }
+</style>
   </head>
   <body>
     <div class="${APP_CONTAINER_CLASS}"></div>
     <!--  Scripts-->
     <script src="${isProd ? STATIC_PATH : `http://localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
     <script src="${STATIC_PATH}/js/libs/jquery-2.1.1.min.js"></script>
-    <script src="${STATIC_PATH}/js/main.js"></script>
     <script src="${STATIC_PATH}/js/libs/materialize.min.js"></script>
-	  <script src="${STATIC_PATH}/js/libs/leaflet.js"></script>
   </body>
 </html>
 `
