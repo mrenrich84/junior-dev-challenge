@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
-import {  STATIC_PATH } from '../../shared/config'
+import {  STATIC_PATH } from '../../../shared/config'
 import L from 'leaflet';
 
 const mapCenter = [51.4839337, -0.2549888];
 const zoomLevel = 9;
-const iconSize = 24
 
 const ControlArrow = (props) => {
   const height = '29px'
   return (
     <button onClick={props.clickHandle} style={{ height: height }}>
-      <img src={props.icon} width={iconSize} height={iconSize}/>
+      <img src={props.icon} width={props.iconSize} height={props.iconSize}/>
     </button>
   )
 }
@@ -48,7 +47,7 @@ const MarkerContainer = (props) => {
   )
 }
 
-export default class App extends Component {
+export default class Mapp extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -85,7 +84,6 @@ export default class App extends Component {
       right: [panStep, 0],
     }
     leafletMap.panBy(pan[dir])
-
   }
 
 
@@ -107,12 +105,10 @@ export default class App extends Component {
     directions.forEach ( dir => {
       arrowOpts[dir] = {
         clickHandle: () => this.panMap(dir),
-        icon: STATIC_PATH + "/pictures/icons/arrows/"+ dir + ".png"
+        icon: STATIC_PATH + "/pictures/icons/arrows/" + dir + ".png",
+        iconSize: 24
       }
     })
-
-    console.log('arrowOpts', arrowOpts);
-
 
     return (
       <div>
