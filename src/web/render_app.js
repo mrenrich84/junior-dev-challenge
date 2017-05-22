@@ -18,6 +18,10 @@ const renderApp = () =>
     .leaflet-container {
         height: 500px;
     }
+
+    .my-div-icon {
+      
+    }
 </style>
   </head>
   <body>
