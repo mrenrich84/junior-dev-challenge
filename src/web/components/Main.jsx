@@ -6,8 +6,8 @@ import Mapp from './Mapp'
 const Main = () => (
   <div>
     <Navbar />
-    <div id="homePage" class="page">
-      <div class="container">
+    <div id="homePage" className="page">
+      <div className="container">
           <Mapp />
       </div>
     </div>

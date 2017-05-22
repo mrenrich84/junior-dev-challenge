@@ -3,17 +3,17 @@
 exports[`<Main /> renders correctly 1`] = `
 <div>
   <div
-    class="navbar-fixed"
+    className="navbar-fixed"
   >
     <nav
-      class="red darken-4"
+      className="red darken-4"
       role="navigation"
     >
       <div
-        class="nav-wrapper container"
+        className="nav-wrapper container"
       >
         <a
-          class="brand-logo"
+          className="brand-logo"
           href="#"
           id="logo-container"
         >
@@ -23,19 +23,23 @@ exports[`<Main /> renders correctly 1`] = `
     </nav>
   </div>
   <div
-    class="page"
+    className="page"
     id="homePage"
   >
     <div
-      class="container"
+      className="container"
     >
       <div
-        class="section"
+        className="section"
       >
         <div
-          class="col s12"
+          className="col s12"
           id="map"
-          style="height:500px;"
+          style={
+            Object {
+              "height": "500px",
+            }
+          }
         />
       </div>
     </div>

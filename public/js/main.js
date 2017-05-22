@@ -1,7 +1,7 @@
 
 var map;
 function addPinsOnMap(latLongs) {
-	var myIcon = L.divIcon({html: '<img height="50px" width="50px" src="pictures/pin.png"></img>'})
+	var myIcon = L.divIcon({html: '<img height="50px" width="50px" src="/static/pictures/pin.png"></img>'})
 	for (var i = 0; i < latLongs.length; i++) {
 		latLongs[i]
 	  var marker2 = L.marker([latLongs[i].lat, latLongs[i].lon], {icon: myIcon}).addTo(map);

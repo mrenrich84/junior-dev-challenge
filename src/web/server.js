@@ -3,7 +3,7 @@ import express from 'express'
 
 import { STATIC_PATH, WEB_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
-import renderApp from './render-app'
+import renderApp from './render_app'
 
 const app = express()
 

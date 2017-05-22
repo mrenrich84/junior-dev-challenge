@@ -2,12 +2,16 @@
 
 exports[`<Mapp /> renders correctly 1`] = `
 <div
-  class="section"
+  className="section"
 >
   <div
-    class="col s12"
+    className="col s12"
     id="map"
-    style="height:500px;"
+    style={
+      Object {
+        "height": "500px",
+      }
+    }
   />
 </div>
 `;
