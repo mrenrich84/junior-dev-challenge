@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-leaflet-control": "^1.4.0"
+  }
+}

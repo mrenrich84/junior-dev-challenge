@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Map, TileLayer } from 'react-leaflet';
+import Control from 'react-leaflet-control';
+
 const stamenTonerTiles = 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png';
 const stamenTonerAttr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const mapCenter = [39.9528, -75.1638];
@@ -50,39 +52,46 @@ export default class App extends Component {
     render() {
     window.console.log('this.state.currentZoomLevel ->',
         this.state.currentZoomLevel);
-    return (
-        <div>
-            <Map
-                ref={m => { this.leafletMap = m; }}
-                center={mapCenter}
-                zoom={zoomLevel}
-            >
-                <TileLayer
-                    attribution={stamenTonerAttr}
-                    url={stamenTonerTiles}
-                />
-            </Map>
+        return (
             <div>
-                <div style={{ marginLeft: '37px' }}>
-                    <button onClick={this.handleUpPanClick}>
-                        Pan up
-                    </button>
-                </div>
-                <div>
-                    <button onClick={this.handleLeftPanClick}>
-                        Pan left
-                    </button>
-                    <button onClick={this.handleRightPanClick}>
-                        Pan right
-                    </button>
-                </div>
-                <div style={{ marginLeft: '30px' }}>
-                    <button onClick={this.handleDownPanClick}>
-                        Pan down
-                    </button>
-                </div>
+                <Map
+                    ref={m => { this.leafletMap = m; }}
+                    center={mapCenter}
+                    zoom={zoomLevel}
+                >
+                    <TileLayer
+                        attribution={stamenTonerAttr}
+                        url={stamenTonerTiles}
+                    />
+                    <Control position="topright">
+                        <div
+                            style={{
+                                backgroundColor: 'black',
+                                padding: '5px',
+                            }}
+                        >
+                            <div style={{ marginLeft: '37px' }}>
+                                <button onClick={this.handleUpPanClick}>
+                                    Pan up
+                                </button>
+                            </div>
+                            <div>
+                                <button onClick={this.handleLeftPanClick}>
+                                    Pan left
+                                </button>
+                                <button onClick={this.handleRightPanClick}>
+                                    Pan right
+                                </button>
+                            </div>
+                            <div style={{ marginLeft: '30px' }}>
+                                <button onClick={this.handleDownPanClick}>
+                                    Pan down
+                                </button>
+                            </div>
+                        </div>
+                    </Control>
+                </Map>
             </div>
-        </div>
-    );
+        );
   }
 }
