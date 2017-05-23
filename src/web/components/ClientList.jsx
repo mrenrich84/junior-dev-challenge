@@ -17,12 +17,19 @@ export default class ClientList extends Component {
     this.getClientsList();
   }
 
+  getCandidatesList(client_id) {
+    const uri = '/api/client/' + client_id
+    axios.get(uri)
+    .then((response) => {
+      this.setState({ candidates: response.data });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   getClientsList() {
     const uri = '/api/clients'
-    // return $.getJSON(uri)
-    //   .then((data) => {
-    //
-    //   });
     axios.get(uri)
     .then((response) => {
       this.setState({ clients: response.data });
@@ -38,6 +45,7 @@ export default class ClientList extends Component {
       clients: [client],
       isMapEnabled: false
     })
+    this.getCandidatesList(i)
   }
 
   render() {

@@ -16,16 +16,22 @@ function getCandidatesWithTravelInfo(destination) {
   const candidatesTransportTypes = Object.keys(candidatesGroupedByTransport)
 
   let results = []
-  candidatesTransportTypes.forEach(async transportType => {
+  let promiseRegistry = []
+  candidatesTransportTypes.forEach(transportType => {
     const candidatesSet = candidatesGroupedByTransport[transportType]
     const postcodes = getCandidatesPostcode(candidatesSet)
     const nextMonday = dateHelpers.getNextMonday(new Date)
     const gmapsTransportType = TRANSPORT_TYPE_CANDIDATES_TO_GMAPS[transportType]
-    const gmapsApiResponse = await gmapsTalker.callGMapsDistanceMatrix(postcodes, destination, gmapsTransportType, nextMonday)
+    let gmapsCallPromise = gmapsTalker.callGMapsDistanceMatrix(postcodes, destination, gmapsTransportType, nextMonday)
+    .then(gmapsApiResponse => updateCandidatesWithTravelInfo(gmapsApiResponse, candidatesSet))
     // console.log(transportType, gmapsApiResponse.status);
-    results.push(...updateCandidatesWithTravelInfo(gmapsApiResponse, candidatesSet))
+    promiseRegistry.push(gmapsCallPromise)
   })
-  return results
+  return Promise.all(promiseRegistry)
+  // .then(() => {
+    // console.log('getCandidatesWithTravelInfo', results)
+    // return results
+  // })
 }
 
 // ------- PRIVATE
@@ -39,6 +45,7 @@ function getCandidatesPostcode(candidates) {
 
 function updateCandidatesWithTravelInfo(gmapsApiResponse, candidatesOrig) {
   let candidates = []
+  // console.log('updateCandidatesWithTravelInfo', gmapsApiResponse);
   candidatesOrig.forEach((candidate, index) => {
     let candidateClone = JSON.parse(JSON.stringify(candidate))
     const gmapsData =  gmapsApiResponse.json.rows[index].elements[0]

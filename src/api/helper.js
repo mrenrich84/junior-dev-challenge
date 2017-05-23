@@ -10,12 +10,20 @@ function getClients (req, res) {
 }
 
 // GET /client/:id
-async function getClientById (req, res) {
+function getClientById (req, res) {
   const client = Clients[req.params.id]
-  const candidatesWithTravelInfo = await candidatesHelper.getCandidatesWithTravelInfo(client.postcode)
-  res.json({
-    client: client,
-    candidates: candidatesWithTravelInfo
+  candidatesHelper.getCandidatesWithTravelInfo(client.postcode)
+  .then( candidatesWithTravelInfoGrouped => {
+    // console.log(candidatesWithTravelInfo);
+    let candidatesWithTravelInfo = []
+    const groups = [0,1,2]
+    groups.forEach (n => candidatesWithTravelInfo.push(...candidatesWithTravelInfoGrouped[n]))
+    console.log(candidatesWithTravelInfo)
+
+    res.json({
+      client: client,
+      candidates: candidatesWithTravelInfo
+    })
   })
 }
 
