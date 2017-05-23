@@ -1,25 +1,57 @@
-import React from 'react'
+import React, { Component } from 'react';
+import axios from 'axios'
+
 import MappContainer from './Mapp/MappContainer'
 import Client from './Client'
 
-const ClientList = () => (
-  <div>
-    <div className="row">
-      <div className="col s12">
-        <h2>Clients</h2>
-    </div>
-    <MappContainer />
-    <div className="row">
-      <div className="col s12">
-        <ul className="collection">
-          <Client name="Ale" postcode="B21 15G" mapIndex="1"/>
-          <Client name="Kroner" postcode="B11 15G" mapIndex="2"/>
-          <Client name="Berg" postcode="B29 15G" mapIndex="3"/>
-        </ul>
+export default class ClientList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {clients: []};
+  }
+
+  componentDidMount() {
+    this.UserList();
+  }
+
+  UserList() {
+    const uri = '/api/clients'
+    // return $.getJSON(uri)
+    //   .then((data) => {
+    //
+    //   });
+    axios.get(uri)
+    .then((response) => {
+      console.log(response.data);
+      this.setState({ clients: response.data });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  render() {
+    const clients = this.state.clients.map((person, i) => {
+      return <Client name={person.name} postcode={person.postcode} mapIndex={i + 1}/>
+    });
+
+    return (
+      <div>
+        <div className="row">
+          <div className="col s12">
+            <h2>Clients</h2>
+        </div>
+        <MappContainer />
+        <div className="row">
+          <div className="col s12">
+            <ul className="collection">
+              { clients }
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-)
+    )
+  }
 
-export default ClientList
+}
