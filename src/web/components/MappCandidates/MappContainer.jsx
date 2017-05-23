@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import Mapp from './Mapp'
 
-export default class MappContainer extends Component {
+export default class MappContainerCandidates extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      markersList: this.createMarkersList(this.props.data)
+      markersList: this.createMarkersList(this.props.clients)
     }
   }
 
-  createMarkersList(data) {
+  createMarkersList(clients) {
     let markersList = []
-    data.forEach (client => {
+    clients.forEach (client => {
       markersList.push({
         latlng: client.location,
         data: [client.name, client.postcode]
@@ -21,7 +21,7 @@ export default class MappContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ markersList: this.createMarkersList(nextProps.data) })
+    this.setState({ markersList: this.createMarkersList(nextProps.clients) })
 
   }
 

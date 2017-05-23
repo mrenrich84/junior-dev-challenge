@@ -19,7 +19,7 @@ function getCandidatesWithTravelInfo(destination) {
   let promiseRegistry = []
   candidatesTransportTypes.forEach(transportType => {
     const candidatesSet = candidatesGroupedByTransport[transportType]
-    const postcodes = getCandidatesPostcode(candidatesSet)
+    const postcodes = getCandidatesLocation(candidatesSet)
     const nextMonday = dateHelpers.getNextMonday(new Date)
     const gmapsTransportType = TRANSPORT_TYPE_CANDIDATES_TO_GMAPS[transportType]
     let gmapsCallPromise = gmapsTalker.callGMapsDistanceMatrix(postcodes, destination, gmapsTransportType, nextMonday)
@@ -39,8 +39,8 @@ function getCandidatesGroupedByTransport() {
   return utilities.groupBy(Candidates, candidate => 'modeOfTransport' in candidate ? candidate.modeOfTransport.type : undefined)
 }
 
-function getCandidatesPostcode(candidates) {
-  return candidates.map(candidate => candidate.postcode)
+function getCandidatesLocation(candidates) {
+  return candidates.map(candidate => candidate.location)
 }
 
 function updateCandidatesWithTravelInfo(gmapsApiResponse, candidatesOrig) {
@@ -49,6 +49,7 @@ function updateCandidatesWithTravelInfo(gmapsApiResponse, candidatesOrig) {
   candidatesOrig.forEach((candidate, index) => {
     let candidateClone = JSON.parse(JSON.stringify(candidate))
     const gmapsData =  gmapsApiResponse.json.rows[index].elements[0]
+    console.log(JSON.stringify(gmapsApiResponse, null, 4));
     candidateClone.meters_to_client = gmapsData.distance.value
     candidateClone.seconds_to_client = gmapsData.duration.value
     candidates.push(candidateClone)
