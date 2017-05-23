@@ -8,7 +8,8 @@ export default class ClientList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clients: []
+      clients: [],
+      isMapEnabled: true
     }
   }
 
@@ -34,7 +35,8 @@ export default class ClientList extends Component {
   clientClick = (i) => {
     const client = this.state.clients[i]
     this.setState({
-      clients: [client]
+      clients: [client],
+      isMapEnabled: false
     })
   }
 
@@ -43,13 +45,14 @@ export default class ClientList extends Component {
       return <Client handleClick={this.clientClick} name={person.name} postcode={person.postcode} mapIndex={i}/>
     });
 
+    let mapp = this.state.isMapEnabled ? <MappContainer clients={this.state.clients}/> : ''
     return (
       <div>
         <div className="row">
           <div className="col s12">
             <h2>Clients</h2>
         </div>
-        <MappContainer clients={this.state.clients}/>
+        {mapp}
         <div className="row">
           <div className="col s12">
             <ul className="collection">
