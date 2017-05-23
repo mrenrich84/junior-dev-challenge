@@ -11,10 +11,10 @@ export default class ClientList extends Component {
   }
 
   componentDidMount() {
-    this.UserList();
+    this.getClientsList();
   }
 
-  UserList() {
+  getClientsList() {
     const uri = '/api/clients'
     // return $.getJSON(uri)
     //   .then((data) => {
@@ -22,7 +22,6 @@ export default class ClientList extends Component {
     //   });
     axios.get(uri)
     .then((response) => {
-      console.log(response.data);
       this.setState({ clients: response.data });
     })
     .catch(function (error) {
@@ -41,7 +40,7 @@ export default class ClientList extends Component {
           <div className="col s12">
             <h2>Clients</h2>
         </div>
-        <MappContainer />
+        <MappContainer clients={this.state.clients}/>
         <div className="row">
           <div className="col s12">
             <ul className="collection">

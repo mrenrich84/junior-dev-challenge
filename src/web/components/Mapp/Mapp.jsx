@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import { Map, Popup, TileLayer } from 'react-leaflet';
 
 import PanControlContainer from './PanControlContainer'
 import MarkerContainer from './MarkerContainer'
 
-const mapCenterDefault = [51.5287718,-0.2417]
+const mapCenterDefault = [54.376381, -2.289520]
 
 export default class Mapp extends Component {
   constructor(props) {
       super(props)
       const mapCenter = props.markersList[0] ? props.markersList[0].latlng : mapCenterDefault
       this.state = {
-        markersList: props.markersList,
+        markersList: this.props.markersList,
         zoomLevel: props.initialZoom,
         mapCenter: mapCenter
       }
@@ -38,6 +37,11 @@ export default class Mapp extends Component {
         const updatedCenter = leafletMap.getCenter();
         this.handleCenterChange(updatedCenter);
       });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    this.setState({markersList: nextProps.markersList })
   }
 
   handleZoomLevelChange(newZoomLevel) {
