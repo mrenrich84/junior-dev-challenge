@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@google/maps": "^0.3.1",
+    "axios": "^0.16.1",
     "babel-polyfill": "^6.23.0",
     "compression": "^1.6.2",
     "dotenv": "^4.0.0",
@@ -40,7 +41,7 @@
     "test:web": "jest web --watch",
     "test:api": "jest api --watch",
     "test:tools": "jest tools --watch",
-    "start:api": "nodemon api/server",
+    "start:api": "nodemon --exec babel-node src/api/server",
     "start:web": "nodemon --exec babel-node web/server"
   }
 }
