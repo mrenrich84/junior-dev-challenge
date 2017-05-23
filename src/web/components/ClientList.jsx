@@ -7,7 +7,9 @@ import Client from './Client'
 export default class ClientList extends Component {
   constructor(props) {
     super(props);
-    this.state = {clients: []};
+    this.state = {
+      clients: []
+    }
   }
 
   componentDidMount() {
@@ -29,9 +31,16 @@ export default class ClientList extends Component {
     });
   }
 
+  clientClick = (i) => {
+    const client = this.state.clients[i]
+    this.setState({
+      clients: [client]
+    })
+  }
+
   render() {
     const clients = this.state.clients.map((person, i) => {
-      return <Client name={person.name} postcode={person.postcode} mapIndex={i + 1}/>
+      return <Client handleClick={this.clientClick} name={person.name} postcode={person.postcode} mapIndex={i}/>
     });
 
     return (
