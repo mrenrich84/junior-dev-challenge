@@ -21,11 +21,13 @@ describe ('Helper', () => {
       //     {
       //       name:"Ale",
       //       postcode:"B4 7XG"
+      //       location: [lat,lng]
       //     },
       //   candidates: [
       //       {
       //         name: "Agnezka Seize-Soinxante-Quatre",
       //         postcode: "B42 1QZ",
+      //         location: [lat,lng]
       //         modeOfTransport: {
       //           type: "bike",
       //           speed: 15.5

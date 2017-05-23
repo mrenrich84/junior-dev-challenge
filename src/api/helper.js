@@ -1,5 +1,5 @@
-let Candidates = require('./models/candidates').Candidates
-let Clients = require('./models/locations').Clients
+let Candidates = require('./models/candidates')
+let Clients = require('./models/clients')
 let gmapsTalker = require('../tools/gmaps_talker')
 let candidatesHelper = require('./models/candidates_helper')
 

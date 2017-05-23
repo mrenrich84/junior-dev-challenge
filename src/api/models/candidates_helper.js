@@ -1,6 +1,6 @@
 let utilities = require('../../tools/utilities')
 let dateHelpers = require('../../tools/date_helpers')
-let Candidates = require('./candidates').Candidates
+let Candidates = require('./candidates')
 let gmapsTalker = require('../../tools/gmaps_talker')
 
 // ------- CONST

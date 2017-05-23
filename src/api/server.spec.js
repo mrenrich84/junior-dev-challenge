@@ -1,9 +1,10 @@
+let request = require('request-promise-native')
+
 let mockGmapsTalker = require('../tools/testUtilities').mockGmapsTalker
 jest.mock('../tools/gmaps_talker', () => mockGmapsTalker)
 
 let server_handle = require('./server')
-
-let request = require('request-promise-native')
+const API_PORT = require('../shared/config').API_PORT
 
 describe ("API server", () => {
   afterAll(done => {
@@ -14,7 +15,7 @@ describe ("API server", () => {
   describe ('/', () => {
     it ("API server is on" , async () => {
       let options = {
-        uri:  'http://localhost:8000/',
+        uri:  `http://localhost:${API_PORT}/`,
         resolveWithFullResponse: true,
         simple: false
       }
@@ -26,7 +27,7 @@ describe ("API server", () => {
     it ("returns a list of clients" , async () => {
       // sends a request to the API
       let options = {
-        uri:  'http://localhost:8000/clients',
+        uri:  `http://localhost:${API_PORT}/clients`,
         resolveWithFullResponse: true,
         simple: false
       }
@@ -41,7 +42,7 @@ describe ("API server", () => {
     it ("returns a list of candidates with their distance in meters and seconds to the client" , async () => {
       // sends a request to the API
       let options = {
-        uri:  'http://localhost:8000/client/0',
+        uri:  `http://localhost:${API_PORT}/client/0`,
         resolveWithFullResponse: true,
         simple: false
       }
@@ -52,12 +53,14 @@ describe ("API server", () => {
       //   client: {
       //     {
       //       name:"Ale",
-      //       postcode:"B4 7XG"
+      //       postcode:"B4 7XG",
+      //       location: [lat,lng]
       //     },
       //   candidates: [
       //       {
       //         name: "Agnezka Seize-Soinxante-Quatre",
       //         postcode: "B42 1QZ",
+      //         location: [lat,lng]
       //         modeOfTransport: {
       //           type: "bike",
       //           speed: 15.5

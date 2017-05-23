@@ -17,6 +17,7 @@ describe('candidatesHelper', () => {
       // console.log(candidates)
       // // [ { name: 'Agnezka Seize-Soinxante-Quatre',
       // // postcode: 'B42 1QZ',
+      // // location: [lat,lng]
       // // modeOfTransport: { type: 'bike', speed: 15.5 },
       // // meters_to_client: 1099202,
       // // seconds_to_client: 182713 },
